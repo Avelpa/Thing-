@@ -15,16 +15,18 @@ import java.awt.Point;
  */
 public class Switch extends Thing{
 
-    private final int WIDTH = 64, HEIGHT = 10;
+    private final int WIDTH, HEIGHT;
     private final double RESTING_ANGLE = Math.toRadians(25);
     private final double MAX_ANGLE = Math.toRadians(160);
     private double angle = RESTING_ANGLE;
     private final double RATE = 0.1;  
     private final double RADIUS = 50;
     
-    public Switch(int x, int y)
+    public Switch(int x, int y, int width, int height)
     {
         super(x, y);
+        WIDTH = width;
+        HEIGHT = height;
     }
     
     @Override
