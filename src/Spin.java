@@ -24,8 +24,8 @@ public class Spin extends Thing{
     private double offset = 0d;
     private double speed;
     private final double minSpeed = 0.005;
-    private final double maxSpeed = 0.05;
-    private final double decrement = 999d/1000;
+    private final double maxSpeed = 0.005;
+    private final double decrement = 9999d/10000;
     
     int[] xs = new int[4];
     int[] ys = new int[4];
