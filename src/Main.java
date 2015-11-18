@@ -15,11 +15,26 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        //Thing[] things = {new Switch(100, 100), new Switch(300, 300)};
+//        Thing[] things = {new Spin(100, 100, 50, 100), 
+//        new Spin(150, 100, 50, 100),
+//        new Spin(200, 100, 50, 100),
+//        new Spin(250, 100, 50, 100),
+//        new Spin(420, 60, 50, 100),
+//        new Spin(500, 362, 70, 25),
+//        new Spin(100, 400, 45, 45),
+//        };
         Thing[] things = new Thing[100];
-        for (int i = 0; i < things.length; i++)
+        int startWidth = 450;
+        int startHeight = 450;
+        for (int i = 0; i < things.length; i ++)
         {
-            things[i] = new Switch(32+(i%10)*64, 32+(i/10)*64);
+            things[i] = new Spin(350,350,startWidth,startHeight);
+            startWidth -= 5;
+            startHeight -= 5;
+            if (startWidth <= 0 || startHeight <= 0)
+            {
+                break;
+            }
         }
         
         View view = new View(things);
@@ -30,16 +45,22 @@ public class Main {
             {
                 for (Thing thing: things)
                 {
-                    thing.click(view.getMouseClick());
+                    if (thing != null)
+                    {
+                        thing.click(view.getMouseClick());
+                    }
                 }
                 view.unclick();
             }
             
             for (Thing thing: things)
             {
-                if (thing.hasStarted())
+                if (thing != null)
                 {
-                    thing.go();
+                    if (thing.hasStarted())
+                    {
+                        thing.go();
+                    }
                 }
             }
             view.repaint();

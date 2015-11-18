@@ -62,7 +62,10 @@ public class View extends JComponent implements MouseListener{
     {
         for (Thing thing: things)
         {
-            thing.draw(g);
+            if (thing != null)
+            {
+                thing.draw(g);
+            }
         }
     }
 
