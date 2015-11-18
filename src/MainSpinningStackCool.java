@@ -16,7 +16,7 @@ public class MainSpinningStackCool {
     public static void main(String[] args) {
         
         Thing[] things = new Thing[100];
-        int startWidth = 450;
+        int startWidth = 300;
         int startHeight = 450;
         for (int i = 0; i < things.length; i ++)
         {

@@ -23,6 +23,7 @@ public class Spin extends Thing{
     private final double[] angles = new double[4];
     private double offset = 0d;
     private double speed;
+    private double curSpeed;
     private final double minSpeed = 0.001;
     private final double maxSpeed = 0.009;
     private final double decrement = 999d/1000;
@@ -108,7 +109,15 @@ public class Spin extends Thing{
     @Override
     protected void start() {
         started = true;
-        speed = (Math.random()*maxSpeed+minSpeed);
+        if (curSpeed == 0)
+        {
+            speed = (Math.random()*maxSpeed+minSpeed);
+            curSpeed = speed;
+        }
+        else
+        {
+            speed = curSpeed;
+        }
     }
 
     @Override
@@ -124,6 +133,7 @@ public class Spin extends Thing{
         }
         else
         {
+            curSpeed = 0;
             offset = 0;
             started = false;
         }
