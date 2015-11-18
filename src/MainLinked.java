@@ -22,7 +22,7 @@ public class MainLinked {
             things[i] = new Switch2(32+(i%10)*64, 32+(i/10)*64);
         }
         
-        View view = new View(things);
+        View view = new View(things, 650,700);
         
         while (true)
         {

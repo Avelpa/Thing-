@@ -15,10 +15,22 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Thing[] things = new Thing[1];
-        things[0] = new Spin(400, 300, 100,30);
+        Thing[] things = new Thing[300];
         
-        View view = new View(things);
+        int viewWidth = 700;
+        int viewHeight = 700;
+        
+        things[0] = new Fade(0, 0, viewWidth, viewHeight);
+        for (int i = 1; i < things.length; i ++)
+        {
+            int width = (int)(Math.random()*100 + 10);
+            int height = (int)(Math.random()*100 + 10);
+            int x = (int)(Math.random()*(viewWidth-width));
+            int y = (int)(Math.random()*(viewHeight-height));
+            things[i] = new Fade(x, y, width, height);
+        }
+        
+        View view = new View(things, viewWidth, viewHeight);
         
         while (true)
         {

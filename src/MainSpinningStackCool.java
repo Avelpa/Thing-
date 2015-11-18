@@ -29,7 +29,7 @@ public class MainSpinningStackCool {
             }
         }
         
-        View view = new View(things);
+        View view = new View(things, 700, 700);
         
         while (true)
         {

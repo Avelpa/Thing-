@@ -20,14 +20,16 @@ import javax.swing.JFrame;
 public class View extends JComponent implements MouseListener{
     
     private JFrame window;
-    private final int WIDTH = 656, HEIGHT = 700;
+    private final int WIDTH, HEIGHT;
     
     private Point clickPoint;
     
     private Thing[] things;
     
-    public View(Thing[] things)
+    public View(Thing[] things, int width, int height)
     {
+        WIDTH = width;
+        HEIGHT = height;
         window = new JFrame("sdfsdf");
         window.setVisible(true);
         window.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -40,6 +42,15 @@ public class View extends JComponent implements MouseListener{
         this.things = things;
         
         clickPoint = new Point(-100, -100);
+    }
+    
+    public int getViewWidth()
+    {
+        return WIDTH;
+    }
+    public int getViewHeight()
+    {
+        return HEIGHT;
     }
     
     public boolean clicked()
