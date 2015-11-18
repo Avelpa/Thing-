@@ -23,8 +23,8 @@ public class Spin extends Thing{
     private final double[] angles = new double[4];
     private double offset = 0d;
     private double speed;
-    private final double minSpeed = 0.001;
-    private final double maxSpeed = 0.5;
+    private final double minSpeed = 0.005;
+    private final double maxSpeed = 0.05;
     private final double decrement = 999d/1000;
     
     int[] xs = new int[4];
