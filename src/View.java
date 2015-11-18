@@ -1,5 +1,9 @@
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -13,12 +17,16 @@ import javax.swing.JFrame;
  *
  * @author Dmitry
  */
-public class View extends JComponent{
+public class View extends JComponent implements MouseListener{
     
     private JFrame window;
-    private final int WIDTH = 640, HEIGHT = 480;
+    private final int WIDTH = 656, HEIGHT = 700;
     
-    public View()
+    private Point clickPoint;
+    
+    private Thing[] things;
+    
+    public View(Thing[] things)
     {
         window = new JFrame("sdfsdf");
         window.setVisible(true);
@@ -26,6 +34,57 @@ public class View extends JComponent{
         window.pack();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(this);
+        
+        this.addMouseListener(this);
+        
+        this.things = things;
+        
+        clickPoint = new Point(-100, -100);
+    }
+    
+    public boolean clicked()
+    {
+        return window.contains(clickPoint);
+    }
+    
+    public void unclick()
+    {
+        clickPoint.setLocation(-100, -100);
+    }
+    
+    public Point getMouseClick()
+    {
+        return clickPoint;
+    }
+    
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        for (Thing thing: things)
+        {
+            thing.draw(g);
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        clickPoint.setLocation(e.getX(), e.getY());
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
     
 }

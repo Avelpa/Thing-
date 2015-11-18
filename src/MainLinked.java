@@ -8,7 +8,7 @@
  *
  * @author Dmitry
  */
-public class Main {
+public class MainLinked {
 
     /**
      * @param args the command line arguments
@@ -19,7 +19,7 @@ public class Main {
         Thing[] things = new Thing[100];
         for (int i = 0; i < things.length; i++)
         {
-            things[i] = new Switch(32+(i%10)*64, 32+(i/10)*64);
+            things[i] = new Switch2(32+(i%10)*64, 32+(i/10)*64);
         }
         
         View view = new View(things);
@@ -35,11 +35,19 @@ public class Main {
                 view.unclick();
             }
             
-            for (Thing thing: things)
+            for (int i = 0; i < things.length; i ++)
             {
-                if (thing.hasStarted())
+                if (things[i].hasStarted())
                 {
-                    thing.go();
+                    things[i].go();
+                }
+                if (i < things.length-1)
+                {
+                    Switch2 pls = (Switch2)things[i];
+                    if (pls.justFinished())
+                    {
+                        things[i+1].start();
+                    }
                 }
             }
             view.repaint();
